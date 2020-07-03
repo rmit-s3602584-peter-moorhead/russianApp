@@ -1,0 +1,19 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <nav>
+        <ul class="nav navbar-nav navbar-right">
+            <% if current_user %>
+                <li><%= link_to "Home", root_path %></li>
+                <li><%= link_to "Learned Words", "/learned" %></li>
+                <li><%= link_to "Words To Learn", "/learning" %></li>
+                <li><%= link_to "Grammar Notes", "/grammar" %></li>
+                <li><%= link_to "Take a quiz", "/quiz" %></li>
+                <li><%= link_to "Take a test", "/test" %></li>
+                <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
+            <% else %>
+                
+            <% end %>
+        </ul>
+    </nav>
+  </div>
+</header>

@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_16_041722) do
+ActiveRecord::Schema.define(version: 2020_07_03_062509) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "learneds", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "vocab_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_learneds_on_user_id"
+    t.index ["vocab_id"], name: "index_learneds_on_vocab_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -28,4 +37,14 @@ ActiveRecord::Schema.define(version: 2020_06_16_041722) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "vocabs", force: :cascade do |t|
+    t.string "russian"
+    t.string "english"
+    t.string "sentence"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "learneds", "users"
+  add_foreign_key "learneds", "vocabs"
 end

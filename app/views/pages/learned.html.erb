@@ -1,0 +1,8 @@
+<p>Learned Words</p>
+<% current_user.vocabs.each do |vocab| %>
+<%= vocab.id %>:
+<%= vocab.russian %>
+
+<%= vocab.english %>
+</br>
+<% end %>
